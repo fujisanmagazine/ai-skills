@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "nagios": {
+      "url": "http://dify.fujisan.co.jp:3200/mcp"
+    }
+  }
+}
