@@ -1,0 +1,21 @@
+{
+  "name": "@fujisan/skill-fujisan-api-docs",
+  "version": "0.1.0",
+  "description": "Agent Skill for consulting Fujisan API documentation",
+  "license": "UNLICENSED",
+  "type": "module",
+  "bin": {
+    "fujisan-api-docs-skill": "bin/install.js"
+  },
+  "files": [
+    "bin",
+    "skill",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}
