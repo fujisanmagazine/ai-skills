@@ -4,7 +4,7 @@ import unittest
 
 spec = importlib.util.spec_from_file_location(
     "fetch_apidoc",
-    pathlib.Path(__file__).resolve().parent.parent / "skill" / "scripts" / "fetch_apidoc.py",
+    pathlib.Path(__file__).resolve().parent.parent / "scripts" / "fetch_apidoc.py",
 )
 fetch_apidoc = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(fetch_apidoc)

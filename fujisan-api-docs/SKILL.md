@@ -39,4 +39,4 @@ Use `https://apidoc.fujisan.co.jp/` as the primary and authoritative source for 
 
 ## Script location
 
-The bundled script is at `scripts/fetch_apidoc.py`, relative to this skill directory. The commands above use that relative path, so run them from the skill directory. When working from this repository rather than an installed skill, the path is `skill/scripts/fetch_apidoc.py`.
+The bundled script is at `scripts/fetch_apidoc.py`, relative to this skill directory. Run the commands above from the skill directory. For a local credentials file, use `scripts/with-apidoc-creds.sh` to load it before running the fetch script.
