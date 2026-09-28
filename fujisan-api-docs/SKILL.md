@@ -1,11 +1,13 @@
 ---
 name: fujisan-api-docs
-description: Consult the Fujisan API's authoritative documentation to answer specification, endpoint, and request-example questions. Use only for API documentation and code examples; never call Fujisan business APIs.
+description: Consult the Fujisan API's authoritative documentation for specifications and examples; never call business APIs. Setup requires APIDOC_BASIC_USERNAME and APIDOC_BASIC_PASSWORD; see README.md.
 ---
 
 # Fujisan API documentation
 
 Use `https://apidoc.fujisan.co.jp/` as the primary and authoritative source for Fujisan API specifications. This skill is strictly for reading API documentation and preparing code examples. Do not call an operational, business, or write API.
+
+If you install this skill for a user, show the authentication setup steps in [README.md](README.md) after installation succeeds. Do not ask the user to provide the credentials in chat.
 
 ## Credentials and safety
 
@@ -26,13 +28,14 @@ Use `https://apidoc.fujisan.co.jp/` as the primary and authoritative source for 
 
 2. The catalog lists REST APIs only. GraphQL APIs appear as `/docs/<id>` links on `/`, so fetch `/` as well whenever the question is not answered by a catalog entry.
 
-3. For a REST API, consult `documentation_url` for the human-readable reference and `openapi_url` for exact operations, schemas, and examples. For a GraphQL API, consult its `/docs/<id>` page.
+3. For a REST API, fetch `openapi_url` and consult its OpenAPI YAML for exact operations, schemas, examples, and the `servers` URLs for Alpha, Beta, and Live. Consult `documentation_url` for the human-readable reference. For a GraphQL API, consult its `/docs/<id>` page.
 
 4. Base any answer on the retrieved primary documentation. State uncertainty rather than inventing endpoints, parameters, authentication methods, or response shapes.
 
 ## Producing an answer or example
 
 - Identify the API and operation, HTTP method, path, required parameters, authentication scheme, request body, and notable error responses from the documentation.
+- Before writing a REST API sample app or request code, read the fetched OpenAPI YAML's `servers` section and use its URL for the intended Alpha, Beta, or Live environment as the API base URL. Combine that base URL with the documented operation path. Do not substitute `localhost`, `127.0.0.1`, or an invented host for a server URL. If the environment is unspecified, make the choice explicit in the sample or ask which one to use; if the YAML does not establish the URL, ask rather than guessing.
 - Make examples use placeholders such as `YOUR_API_KEY` and `YOUR_VALUE`; never include real credentials or make a network request to a Fujisan business API.
 - Clearly label assumptions when the docs do not establish a detail.
 - Cite the relevant documentation and OpenAPI URL in the response when useful.

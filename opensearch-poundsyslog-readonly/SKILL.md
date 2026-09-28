@@ -1,11 +1,13 @@
 ---
 name: opensearch-poundsyslog-readonly
-description: "Analyze pound access logs on the configured Fujisan OpenSearch cluster without making any index or data changes. Use for requested z86 log investigations."
+description: "Analyze z86 pound access logs on Fujisan OpenSearch without data changes. Setup requires OPENSEARCH_USER and OPENSEARCH_PASSWORD in the workspace .env; see README.md."
 ---
 
 # Fujisan Pound/OpenSearch Read-only Analysis
 
 Use this skill for investigations of the Fujisan pound access logs when the user wants searches or aggregations only.
+
+If you install this skill for a user, show the authentication setup steps in [README.md](README.md) after installation succeeds. Do not ask the user to provide the credentials in chat.
 
 ## Connection
 
