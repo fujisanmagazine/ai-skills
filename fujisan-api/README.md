@@ -1,4 +1,4 @@
-# Fujisan API Docs Skill
+# Fujisan API Skill
 
 An Agent Skill for consulting the primary Fujisan API documentation. It reads only documentation resources from `https://apidoc.fujisan.co.jp/`; it does not call operational Fujisan APIs.
 
@@ -15,8 +15,8 @@ gh repo view fujisanmagazine/ai-skills
 If already signed in, skip `gh auth login`. If the organization requires SAML SSO, [authorize GitHub CLI's app for the organization](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-single-sign-on/authorizing-an-app-for-single-sign-on) as needed. Then run this command in the project where you want to use the skill:
 
 ```sh
-npx skills add fujisanmagazine/ai-skills --skill fujisan-api-docs -a cursor -y && printf '%s\n' \
-  'Authentication setup for fujisan-api-docs:' \
+npx skills add fujisanmagazine/ai-skills --skill fujisan-api -a cursor -y && printf '%s\n' \
+  'Authentication setup for fujisan-api:' \
   '1. Create ~/.config/fujisan/apidoc.env with APIDOC_BASIC_USERNAME and APIDOC_BASIC_PASSWORD.' \
   '2. Restrict it to your account: chmod 600 ~/.config/fujisan/apidoc.env' \
   '3. See the installed skill README for the credential wrapper and usage.'
@@ -25,8 +25,8 @@ npx skills add fujisanmagazine/ai-skills --skill fujisan-api-docs -a cursor -y &
 On a machine still using Node.js 20, run the CLI with a temporary compatible Node.js version:
 
 ```sh
-npx --yes --package=node@22.20.0 --package=skills -- skills add fujisanmagazine/ai-skills --skill fujisan-api-docs -a cursor -y && printf '%s\n' \
-  'Authentication setup for fujisan-api-docs:' \
+npx --yes --package=node@22.20.0 --package=skills -- skills add fujisanmagazine/ai-skills --skill fujisan-api -a cursor -y && printf '%s\n' \
+  'Authentication setup for fujisan-api:' \
   '1. Create ~/.config/fujisan/apidoc.env with APIDOC_BASIC_USERNAME and APIDOC_BASIC_PASSWORD.' \
   '2. Restrict it to your account: chmod 600 ~/.config/fujisan/apidoc.env' \
   '3. See the installed skill README for the credential wrapper and usage.'

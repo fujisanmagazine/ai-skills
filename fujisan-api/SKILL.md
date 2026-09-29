@@ -1,5 +1,5 @@
 ---
-name: fujisan-api-docs
+name: fujisan-api
 description: Consult the Fujisan API's authoritative documentation for specifications and examples; never call business APIs. Setup requires APIDOC_BASIC_USERNAME and APIDOC_BASIC_PASSWORD; see README.md.
 ---
 

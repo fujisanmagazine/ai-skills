@@ -2,7 +2,7 @@
 
 This repository contains the following Agent Skills:
 
-- `fujisan-api-docs`
+- `fujisan-api`
 - `opensearch-poundsyslog-readonly`
 - `nagios-history`
 - `nagios-investigate`
