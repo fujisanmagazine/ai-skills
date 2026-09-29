@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fujisan Pound Logs (Read-only)"
+  short_description: "Safely analyze z86 pound access logs"
+  default_prompt: "Use $opensearch-poundsyslog-readonly to analyze the z86 logs under the conditions I provide."
