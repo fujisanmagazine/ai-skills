@@ -1,10 +1,10 @@
-# Fujisan Pound/OpenSearch Read-only Skill
+# Fujisan Pound/OpenSearch 読み取り専用スキル
 
-This Agent Skill supports read-only investigations of pound access logs in the Fujisan OpenSearch cluster. It requires `OPENSEARCH_USER` and `OPENSEARCH_PASSWORD` in the workspace's `.env` file when the skill is used.
+この Agent Skill は、Fujisan の OpenSearch クラスターにある pound アクセスログを読み取り専用で調査するためのスキルです。利用時には、ワークスペースの `.env` ファイルに `OPENSEARCH_USER` と `OPENSEARCH_PASSWORD` を設定する必要があります。
 
-## Install
+## インストール
 
-After this skill is pushed to GitHub, install it from the repository with the [skills CLI](https://github.com/vercel-labs/skills). The current CLI requires Node.js 22.20.0 or later. Each installer must have Read access to the private `fujisanmagazine/ai-skills` repository. On their own machine, they can authenticate and check access with:
+このスキルを GitHub にプッシュした後、[skills CLI](https://github.com/vercel-labs/skills) を使ってリポジトリからインストールできます。現在の CLI には Node.js 22.20.0 以降が必要です。インストールするユーザーには、非公開リポジトリ `fujisanmagazine/ai-skills` への読み取り権限が必要です。各自の端末で、次のコマンドを使って認証とアクセス権を確認してください。
 
 ```sh
 gh auth login -h github.com --git-protocol https --web
@@ -12,33 +12,33 @@ gh auth status
 gh repo view fujisanmagazine/ai-skills
 ```
 
-If already signed in, skip `gh auth login`. If the organization requires SAML SSO, [authorize GitHub CLI's app for the organization](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-single-sign-on/authorizing-an-app-for-single-sign-on) as needed. Then run the command in the project where you want to use the skill:
+すでにログイン済みの場合は、`gh auth login` を省略できます。組織で SAML SSO が必須の場合は、必要に応じて [GitHub CLI のアプリに組織へのアクセスを承認](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-single-sign-on/authorizing-an-app-for-single-sign-on)してください。その後、スキルを利用したいプロジェクトで次のコマンドを実行します。
 
 ```sh
 npx skills add fujisanmagazine/ai-skills --skill opensearch -a cursor -y && printf '%s\n' \
-  'Authentication setup for opensearch:' \
-  '1. Add OPENSEARCH_USER and OPENSEARCH_PASSWORD to the workspace .env file.' \
-  '2. Keep .env out of Git and restrict it: chmod 600 .env' \
-  '3. See the installed skill README for the full setup instructions.'
+  'opensearch の認証設定:' \
+  '1. ワークスペースの .env ファイルに OPENSEARCH_USER と OPENSEARCH_PASSWORD を追加してください。' \
+  '2. .env を Git の管理対象から除外し、アクセス権を制限してください: chmod 600 .env' \
+  '3. 詳しい設定手順は、インストールしたスキルの README を参照してください。'
 ```
 
-On a machine still using Node.js 20, run the CLI with a temporary compatible Node.js version:
+Node.js 20 を使用している端末では、一時的に対応バージョンの Node.js を使って CLI を実行します。
 
 ```sh
 npx --yes --package=node@22.20.0 --package=skills -- skills add fujisanmagazine/ai-skills --skill opensearch -a cursor -y && printf '%s\n' \
-  'Authentication setup for opensearch:' \
-  '1. Add OPENSEARCH_USER and OPENSEARCH_PASSWORD to the workspace .env file.' \
-  '2. Keep .env out of Git and restrict it: chmod 600 .env' \
-  '3. See the installed skill README for the full setup instructions.'
+  'opensearch の認証設定:' \
+  '1. ワークスペースの .env ファイルに OPENSEARCH_USER と OPENSEARCH_PASSWORD を追加してください。' \
+  '2. .env を Git の管理対象から除外し、アクセス権を制限してください: chmod 600 .env' \
+  '3. 詳しい設定手順は、インストールしたスキルの README を参照してください。'
 ```
 
-Use `-a codex` or `-a claude-code` for those agents. Add `-g` to install globally instead of in the current project. The CLI can also use an existing Git credential helper or authorized SSH key.
+Codex を利用する場合は `-a codex`、Claude Code を利用する場合は `-a claude-code` を指定してください。現在のプロジェクトではなくグローバルにインストールするには、`-g` を追加します。CLI は、既存の Git 認証ヘルパーや、アクセス権のある SSH キーも利用できます。
 
-No repository clone or npm package publication is needed.
+リポジトリのクローンや npm パッケージの公開は不要です。
 
-## Credentials for live requests
+## OpenSearch への接続に必要な認証情報
 
-The OpenSearch cluster requires an account. In the workspace where the skill will run, create a `.env` file with restrictive permissions, then edit it:
+OpenSearch クラスターへの接続にはアカウントが必要です。スキルを実行するワークスペースで `.env` ファイルを作成し、アクセス権を制限してから編集してください。
 
 ```sh
 touch .env
@@ -46,4 +46,4 @@ chmod 600 .env
 ${EDITOR:-vi} .env
 ```
 
-Add `OPENSEARCH_USER=...` and `OPENSEARCH_PASSWORD=...` as separate shell assignment lines. Use the credentials issued for the OpenSearch cluster. Keep `.env` out of Git (`git check-ignore .env` should report the file); do not paste credentials into chat or a shell command. The skill reads this file when it runs.
+`OPENSEARCH_USER=...` と `OPENSEARCH_PASSWORD=...` を、それぞれ別の行にシェルの変数代入形式で記述してください。OpenSearch クラスター用に発行された認証情報を使用します。`.env` は Git の管理対象から除外してください（`git check-ignore .env` の出力にファイルが表示されることを確認します）。認証情報をチャットやシェルコマンドに貼り付けないでください。スキルは実行時にこのファイルを読み込みます。
