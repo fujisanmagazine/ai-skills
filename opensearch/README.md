@@ -15,8 +15,8 @@ gh repo view fujisanmagazine/ai-skills
 If already signed in, skip `gh auth login`. If the organization requires SAML SSO, [authorize GitHub CLI's app for the organization](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-single-sign-on/authorizing-an-app-for-single-sign-on) as needed. Then run the command in the project where you want to use the skill:
 
 ```sh
-npx skills add fujisanmagazine/ai-skills --skill opensearch-poundsyslog-readonly -a cursor -y && printf '%s\n' \
-  'Authentication setup for opensearch-poundsyslog-readonly:' \
+npx skills add fujisanmagazine/ai-skills --skill opensearch -a cursor -y && printf '%s\n' \
+  'Authentication setup for opensearch:' \
   '1. Add OPENSEARCH_USER and OPENSEARCH_PASSWORD to the workspace .env file.' \
   '2. Keep .env out of Git and restrict it: chmod 600 .env' \
   '3. See the installed skill README for the full setup instructions.'
@@ -25,8 +25,8 @@ npx skills add fujisanmagazine/ai-skills --skill opensearch-poundsyslog-readonly
 On a machine still using Node.js 20, run the CLI with a temporary compatible Node.js version:
 
 ```sh
-npx --yes --package=node@22.20.0 --package=skills -- skills add fujisanmagazine/ai-skills --skill opensearch-poundsyslog-readonly -a cursor -y && printf '%s\n' \
-  'Authentication setup for opensearch-poundsyslog-readonly:' \
+npx --yes --package=node@22.20.0 --package=skills -- skills add fujisanmagazine/ai-skills --skill opensearch -a cursor -y && printf '%s\n' \
+  'Authentication setup for opensearch:' \
   '1. Add OPENSEARCH_USER and OPENSEARCH_PASSWORD to the workspace .env file.' \
   '2. Keep .env out of Git and restrict it: chmod 600 .env' \
   '3. See the installed skill README for the full setup instructions.'

@@ -1,5 +1,5 @@
 ---
-name: opensearch-poundsyslog-readonly
+name: opensearch
 description: "Analyze z86 pound access logs on Fujisan OpenSearch without data changes. Setup requires OPENSEARCH_USER and OPENSEARCH_PASSWORD in the workspace .env; see README.md."
 ---
 
