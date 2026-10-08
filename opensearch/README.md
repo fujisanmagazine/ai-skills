@@ -4,7 +4,7 @@
 
 ## インストール
 
-このスキルを GitHub にプッシュした後、[skills CLI](https://github.com/vercel-labs/skills) を使ってリポジトリからインストールできます。現在の CLI には Node.js 22.20.0 以降が必要です。インストールするユーザーには、非公開リポジトリ `fujisanmagazine/ai-skills` への読み取り権限が必要です。各自の端末で、次のコマンドを使って認証とアクセス権を確認してください。
+[skills CLI](https://github.com/vercel-labs/skills) を使ってリポジトリからインストールできます。現在の CLI には Node.js 22.20.0 以降が必要です。インストールするユーザーには、非公開リポジトリ `fujisanmagazine/ai-skills` への読み取り権限が必要です。各自の端末で、次のコマンドを使って認証とアクセス権を確認してください。
 
 ```sh
 gh auth login -h github.com --git-protocol https --web
