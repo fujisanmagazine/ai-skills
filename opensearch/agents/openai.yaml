@@ -1,4 +1,4 @@
 interface:
-  display_name: "Fujisan Pound Logs (Read-only)"
-  short_description: "Safely analyze z86 pound access logs"
-  default_prompt: "Use $opensearch to analyze the z86 logs under the conditions I provide."
+  display_name: "Fujisan OpenSearch Logs (Read-only)"
+  short_description: "Analyze Fujisan server, web, and Windows logs"
+  default_prompt: "Use $opensearch to investigate Fujisan logs within the time range and host or service scope I provide."

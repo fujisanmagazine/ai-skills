@@ -1,6 +1,20 @@
-# Fujisan Pound/OpenSearch 読み取り専用スキル
+# Fujisan OpenSearch 読み取り専用ログ調査スキル
 
-この Agent Skill は、Fujisan の OpenSearch クラスターにある pound アクセスログを読み取り専用で調査するためのスキルです。利用時には、ワークスペースの `.env` ファイルに `OPENSEARCH_USER` と `OPENSEARCH_PASSWORD` を設定する必要があります。
+この Agent Skill は、Fujisan の OpenSearch クラスターにあるサーバー・アプリケーションログ、Webアクセスログ、Windowsイベントを読み取り専用で調査するためのスキルです。利用時には、ワークスペースの `.env` ファイルに `OPENSEARCH_USER` と `OPENSEARCH_PASSWORD` を設定する必要があります。
+
+## 調査対象
+
+| インデックスパターン | 用途 |
+|---|---|
+| `collect-logs-*` | すべてのサーバーのログを集約 |
+| `pound-logs-*` | Pound・ELB・API GatewayのWebアクセスログ |
+| `windows-event-logs-*` | Windowsイベントログ |
+
+調査時は期間と対象ホスト・サービスなどを指定してください。ホストを `z86` に固定する制約はありません。タイムゾーンの指定がない場合は日本時間（Asia/Tokyo）で解釈します。
+
+例: 「opensearch で、2026年10月8日15時から16時（JST）の zasshi-catalog1 の nginx/catalog-page-admin ログを調べてください。」
+
+フィールドの説明とログ種別ごとの注意点は [ログスキーマ資料](references/log-schema.md) を参照してください。資料は提供されたサンプルに基づき、マッピングや全ログでのフィールド存在を保証するものではありません。
 
 ## インストール
 
