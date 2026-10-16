@@ -15,7 +15,16 @@ if [ ! -f "$env_file" ]; then
   exit 2
 fi
 
-mode=$(stat -f '%OLp' "$env_file" 2>/dev/null || stat -c '%a' "$env_file")
+# GNU coreutils: -c is the format and -f is --file-system.
+# BSD/macOS: -f is the format and -c is an illegal option.
+# Probe -c first and discard that output. On GNU, -f still prints filesystem
+# details for a real path and exits non-zero, so a -f-first `||` fallback
+# concatenates those details with the permission bits.
+if stat -c '%a' "$env_file" >/dev/null 2>&1; then
+  mode=$(stat -c '%a' "$env_file")
+else
+  mode=$(stat -f '%OLp' "$env_file")
+fi
 case "$mode" in
   600|400) ;;
   *)
